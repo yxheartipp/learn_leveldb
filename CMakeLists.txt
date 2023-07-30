@@ -36,7 +36,7 @@ option(LEVELDB_INSTALL "Install LevelDB's header and library" ON)
 
 include(CheckIncludeFile)
 check_include_file("unistd.h" HAVE_UNISTD_H)
-
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 include(CheckLibraryExists)
 check_library_exists(crc32c crc32c_value "" HAVE_CRC32C)
 check_library_exists(snappy snappy_compress "" HAVE_SNAPPY)
@@ -328,6 +328,7 @@ if(LEVELDB_BUILD_TESTS)
     target_sources(leveldb_tests
       PRIVATE
         "app/app_test.cc"
+        "my_test/my_arena_test.cc"
         "db/autocompact_test.cc"
         "db/corruption_test.cc"
         "db/db_test.cc"
