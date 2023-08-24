@@ -5,7 +5,7 @@
 cmake_minimum_required(VERSION 3.9)
 # Keep the version below in sync with the one in db.h
 project(leveldb VERSION 1.23.0 LANGUAGES C CXX)
-
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # C standard can be overridden when this is used as a sub-project.
 if(NOT CMAKE_C_STANDARD)
   # This project can use C11, but will gracefully decay down to C89.
@@ -342,7 +342,6 @@ if(LEVELDB_BUILD_TESTS)
         "helpers/memenv/memenv_test.cc"
         "table/filter_block_test.cc"
         "table/table_test.cc"
-        "util/arena_test.cc"
         "util/bloom_test.cc"
         "util/cache_test.cc"
         "util/coding_test.cc"
