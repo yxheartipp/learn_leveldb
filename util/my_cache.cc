@@ -286,6 +286,19 @@ static const int kNumShards = 1 << kNumShardBits;
 class M_ShardedLRUCache : public Cache {
  private:
   M_LRUCache shard_[kNumShards];
+  port::Mutex id_mutex_;
+  uint64_t last_id_;
+
+  static inline uint32_t HashSlice(const Slice& s) {
+    return Hash(s.data(), s.size(), 0);
+  }
+
+  static uint32_t Shard(uint32_t hash) { return hash >> (32 - kNumShardBits); }
+
+ public:
+  explicit M_ShardedLRUCache(size_t capacity) : last_id_(0) {
+      
+  }
 };
 
 }

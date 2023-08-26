@@ -173,6 +173,7 @@ target_sources(leveldb
     "util/arena.cc"
     "util/arena.h"
     "util/bloom.cc"
+    "util/my_bloom.cc"
     "util/cache.cc"
     "util/coding.cc"
     "util/coding.h"
@@ -327,7 +328,6 @@ if(LEVELDB_BUILD_TESTS)
   if(NOT BUILD_SHARED_LIBS)
     target_sources(leveldb_tests
       PRIVATE
-        "app/app_test.cc"
         "db/autocompact_test.cc"
         "db/corruption_test.cc"
         "db/db_test.cc"
@@ -392,6 +392,7 @@ if(LEVELDB_BUILD_TESTS)
   endfunction(leveldb_test)
 
   leveldb_test("db/c_test.c")
+  leveldb_test("app/app_test.cc")
 
   if(NOT BUILD_SHARED_LIBS)
     # TODO(costan): This test also uses

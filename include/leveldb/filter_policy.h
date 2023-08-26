@@ -67,6 +67,8 @@ class LEVELDB_EXPORT FilterPolicy {
 // trailing spaces in keys.
 LEVELDB_EXPORT const FilterPolicy* NewBloomFilterPolicy(int bits_per_key);
 
+LEVELDB_EXPORT const FilterPolicy* M_NewBloomFilterPolicy(int bits_per_key);
+
 }  // namespace leveldb
 
 #endif  // STORAGE_LEVELDB_INCLUDE_FILTER_POLICY_H_
