@@ -142,6 +142,7 @@ target_sources(leveldb
     "db/memtable.h"
     "db/repair.cc"
     "db/skiplist.h"
+    "db/new_skiplist.h"
     "db/snapshot.h"
     "db/table_cache.cc"
     "db/table_cache.h"
@@ -393,7 +394,7 @@ if(LEVELDB_BUILD_TESTS)
 
   leveldb_test("db/c_test.c")
   leveldb_test("app/app_test.cc")
-
+  leveldb_test("app/new_skiplist_test.cc")
   if(NOT BUILD_SHARED_LIBS)
     # TODO(costan): This test also uses
     #               "util/env_{posix|windows}_test_helper.h"
