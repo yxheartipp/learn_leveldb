@@ -152,7 +152,7 @@ inline void New_SkipList<Key, Comparator>::Iterator::Prev() {
   assert(Valid());
   node_ = list_->FindLessThan(node_->key);
   if (node_ == list_->head_) {
-    node_ == nullptr;
+    node_ = nullptr;
   }
 }
 
@@ -171,7 +171,7 @@ template <typename Key, class Comparator>
 inline void New_SkipList<Key, Comparator>::Iterator::SeekToLast() {
   node_ = list_->FindLast();
   if (node_ == list_->head_) {
-    node_ == nullptr;
+    node_ = nullptr;
   }
 }
 
@@ -259,10 +259,9 @@ template <typename Key, class Comparator>
 New_SkipList<Key, Comparator>::New_SkipList(Comparator cmp, Arena* arena)
     : compare_(cmp),
       arena_(arena),
-      head_(NewNode(0, kMaxHeight)),
+      head_(NewNode(0 /* any key will do */, kMaxHeight)),
       max_height_(1),
       rnd_(0xdeadbeef) {
-  // 跳表对多层的支持每一层都要进行初始化。
   for (int i = 0; i < kMaxHeight; i++) {
     head_->SetNext(i, nullptr);
   }

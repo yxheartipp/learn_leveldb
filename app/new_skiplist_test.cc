@@ -62,7 +62,7 @@ TEST(SkipTest, InsertAndLookup) {
   std::set<Key> keys;
   Arena arena;
   Comparator cmp;
-  New_SkipList<Key, Comparator> list(cmp, &arena);
+  SkipList<Key, Comparator> list(cmp, &arena);
   for (int i = 0; i < N; i++) {
     Key key = rnd.Next() % R;
     if (keys.insert(key).second) {
@@ -80,7 +80,7 @@ TEST(SkipTest, InsertAndLookup) {
 
   // Simple iterator tests
   {
-    New_SkipList<Key, Comparator>::Iterator iter(&list);
+    SkipList<Key, Comparator>::Iterator iter(&list);
     ASSERT_TRUE(!iter.Valid());
 
     iter.Seek(0);
@@ -98,7 +98,7 @@ TEST(SkipTest, InsertAndLookup) {
 
   // Forward iteration test
   for (int i = 0; i < R; i++) {
-    New_SkipList<Key, Comparator>::Iterator iter(&list);
+    SkipList<Key, Comparator>::Iterator iter(&list);
     iter.Seek(i);
 
     // Compare against model iterator
@@ -118,7 +118,7 @@ TEST(SkipTest, InsertAndLookup) {
 
   // Backward iteration test
   {
-    New_SkipList<Key, Comparator>::Iterator iter(&list);
+    SkipList<Key, Comparator>::Iterator iter(&list);
     iter.SeekToLast();
 
     // Compare against model iterator
