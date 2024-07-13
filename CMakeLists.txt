@@ -300,7 +300,7 @@ if(LEVELDB_BUILD_TESTS)
   set(install_gtest OFF)
   set(install_gmock OFF)
   set(build_gmock ON)
-
+#
   # This project is tested using GoogleTest.
   add_subdirectory("third_party/googletest")
 
